@@ -24,26 +24,15 @@
             align-items: center;
             position: absolute;
         }
-        .tiled-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: 50px;
-            max-height: 100vh; 
-            max-width: 100vw;
-            height: auto;
-            width: auto; 
-            object-fit: contain; /* Ensures the image scales proportionally */
-            background: url('Pola.jpg') repeat; /* Adds tiling effect */
-            z-index: -1; /* Moves the image behind other content */
-            opacity: 0.5; /* Makes the image slightly transparent */
-        }
         .quiz-section {
             position: relative;
             text-align: center;
             justify-content: center;
             padding: 50px;
-            background-color: rgba(0, 0, 0, 0.7); /* Transparency for quiz section */
+            background-image: url('Pola.jpg'); /* Sets the image as the background */
+            background-repeat: repeat; /* Tiles the image */
+            background-size: auto; /* Keeps the original size of the image for the tiles */
+            background-color: rgba(0, 0, 0, 0.7); /* Adds a semi-transparent overlay */
             max-width: 100%;
             margin: 20px;
             border-radius: 10px;
@@ -84,7 +73,6 @@
 </head>
 <body>
     <div class="container">
-        <img src="Pola.jpg" alt="Background Image" class="tiled-image">
         <div class="quiz-section">
             <h2>🎶🎉 පොලා ගැන ප්‍රශ්න 10ක් 🎉🎶</h2>
             <p>සංගීතලෝලී හිත මිතුරනි! ඔබට ජිවිතයේ අමතක නොවන විනෝදාත්මක සැන්දෑවක් ගතකිරීමට මෙන්න අනගි අවශ්‍යද?</p>
