@@ -18,36 +18,25 @@
         .container {
             height: 100vh;
             width: 100vw;
-            background-image: url('Pola.jpg'); /* Replace with the path to your image */
-            background-repeat: repeat; /* Makes the image tile */
-            background-size: auto; /* Keeps the original size of the tile */
             padding: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: absolute;
         }
-
-        .container img {
+        .tiled-image {
+            position: absolute;
+            top: 0;
+            left: 0;
             max-height: 100vh; 
             max-width: 100vw;
             height: auto;
             width: auto; 
-            position: absolute;
-            z-index: -1; /* This ensures the quiz is on top of the image */
+            object-fit: contain; /* Ensures the image scales proportionally */
+            background: url('Pola.jpg') repeat; /* Adds tiling effect */
+            z-index: -1; /* Moves the image behind other content */
+            opacity: 0.5; /* Makes the image slightly transparent */
         }
-
-        .contact-number {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.5); 
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 18px;
-        }
-
         .quiz-section {
             position: relative;
             text-align: center;
@@ -94,7 +83,7 @@
 </head>
 <body>
     <div class="container">
-        
+        <img src="Pola.jpg" alt="Background Image" class="tiled-image">
     </div>
     <div class="quiz-section">
             <h2>🎶🎉 පොලා ගැන ප්‍රශ්න 10ක් 🎉🎶</h2>
