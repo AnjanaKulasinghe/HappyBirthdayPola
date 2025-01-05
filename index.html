@@ -144,6 +144,12 @@
             a.href = URL.createObjectURL(blob);
             a.download = fileName; // Use the dynamic filename
             a.click();
+        
+            // Display thank-you popup
+            alert(`Thank you, ${userName}! Your answers have been submitted.`);
+        
+            // Clear the form
+            form.reset();
         }
     </script>
 </body>
