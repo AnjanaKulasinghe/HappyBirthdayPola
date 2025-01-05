@@ -137,9 +137,8 @@
                 },
                 body: JSON.stringify(data),
             })
-                .then((response) => response.json())
-                .then((data) => {
-                    alert(data.message); // Thank-you message
+                .then(() => {
+                    alert("Thank you! Your response has been submitted.");
                     form.reset(); // Clear the form
                 })
                 .catch((error) => {
