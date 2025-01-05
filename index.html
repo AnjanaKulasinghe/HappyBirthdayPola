@@ -131,6 +131,7 @@
             // Send data to Google Sheets Apps Script
             fetch("https://script.google.com/macros/s/AKfycbxGyGkfgWhoJz8QpDM1gVW4skrmSV6G8jJjUCfH0AxPiCMLbREvBhrSwzs1fZx8ELmoAQ/exec", {
                 method: "POST",
+                mode: "no-cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
