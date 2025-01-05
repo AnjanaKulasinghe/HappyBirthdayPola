@@ -121,35 +121,30 @@
         function saveAnswers() {
             const form = document.getElementById('quizForm');
             const formData = new FormData(form);
-            let answers = "🎶🎉 Pola Quiz Answers 🎉🎶\n\n";
         
-            // Loop through the form data and append each answer
-            for (const [key, value] of formData.entries()) {
-                answers += `${key}: ${value}\n\n`;
-            }
+            // Convert form data to JSON
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
         
-            // Get the user's name
-            const userName = formData.get('name') || 'Anonymous';
-            const sanitizedUserName = userName.replace(/[^a-zA-Z0-9]/g, '_'); // Replace special characters in name
-        
-            // Generate timestamp
-            const timestamp = new Date().toISOString().replace(/[:.]/g, '-'); // Format: YYYY-MM-DDTHH-MM-SS
-        
-            // Create the filename
-            const fileName = `${sanitizedUserName}_${timestamp}.txt`;
-        
-            // Create a blob and save it as a .txt file
-            const blob = new Blob([answers], { type: 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = fileName; // Use the dynamic filename
-            a.click();
-        
-            // Display thank-you popup
-            alert(`Thank you, ${userName}! Your answers have been submitted.`);
-        
-            // Clear the form
-            form.reset();
+            // Send data to Google Sheets Apps Script
+            fetch("https://script.google.com/macros/s/AKfycbzh_j2X-G8160FP91fArjImwhH2mLelnlKKN_vDowSZCHKiRmjkq6Fofk_MGO2YDN_gQA/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    alert(data.message); // Thank-you message
+                    form.reset(); // Clear the form
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                    alert("An error occurred. Please try again later.");
+                });
         }
     </script>
 </body>
